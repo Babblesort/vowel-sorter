@@ -10,7 +10,7 @@ test('renders input and button', () => {
   expect(container.querySelector('button.reset-button')).toBeInTheDocument();
 });
 
-test('calls onChange prop with for input onChange events', () => {
+test('calls onChange prop for onChange events', () => {
   const mockOnChange = jest.fn();
 
   const { container } = render(<TextEntry onChange={mockOnChange} />);
@@ -21,7 +21,7 @@ test('calls onChange prop with for input onChange events', () => {
   expect(mockOnChange).toHaveBeenCalledWith('z');
 });
 
-test('calls onChange prop with last character in input for input onChange events', () => {
+test('calls onChange prop with last character in input for onChange events', () => {
   const mockOnChange = jest.fn();
 
   const { container } = render(<TextEntry onChange={mockOnChange} />);
@@ -45,7 +45,7 @@ test('reset button calls onReset prop for click events', () => {
   expect(mockOnReset).toHaveBeenCalledTimes(1);
 });
 
-test('reset button clears text in input', () => {
+test('reset button clears any text in input', () => {
   const mockOnChange = jest.fn();
   const mockOnReset = jest.fn();
 
