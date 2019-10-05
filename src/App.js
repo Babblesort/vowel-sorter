@@ -1,24 +1,30 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import TextEntry from './TextEntry';
+import LetterList from './LetterList';
+import isVowel from './services/isVowel';
 
 function App() {
+  const [vowels, setVowels] = useState([]);
+  const [others, setOthers] = useState([]);
+
+  const handleTextEntry = letter =>
+    isVowel(letter)
+      ? setVowels([...vowels, letter])
+      : setOthers([...others, letter]);
+
+  const handleReset = () => {
+    setVowels([]);
+    setOthers([]);
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Vowel Sorter</h1>
+      <TextEntry onChange={handleTextEntry} onReset={handleReset} />
+      <div className="letter-lists-container">
+        <LetterList label="Vowels" letters={vowels} />
+        <LetterList label="Others" letters={others} />
+      </div>
     </div>
   );
 }
