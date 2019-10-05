@@ -16,21 +16,23 @@ describe('using forEach to create multiple tests for many test cases', () => {
 
   //using forEach we can generate multiple tests for multiple test cases
   vowels.forEach(vowel =>
-    test('identifies vowels', () => expect(isVowel(vowel)).toBe(true))
+    test(`identifies ${vowel} as vowel`, () =>
+      expect(isVowel(vowel)).toBe(true))
   );
 
   vowels.forEach(vowel =>
-    test('identifies vowels case-insensitive', () =>
+    test(`identifies ${vowel} as vowel case-insensitive`, () =>
       expect(isVowel(vowel.toUpperCase())).toBe(true))
   );
 
-  others.forEach(vowel =>
-    test('identifies non-vowels', () => expect(isVowel(vowel)).toBe(false))
+  others.forEach(other =>
+    test(`identifies ${other} as non-vowel`, () =>
+      expect(isVowel(other)).toBe(false))
   );
 
-  others.forEach(vowel =>
-    test('identifies non-vowels case-insensitive', () =>
-      expect(isVowel(vowel.toUpperCase())).toBe(false))
+  others.forEach(other =>
+    test(`identifies ${other} as non-vowel case-insensitive`, () =>
+      expect(isVowel(other.toUpperCase())).toBe(false))
   );
 });
 
