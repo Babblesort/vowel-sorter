@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 const TextEntry = ({ onChange, onReset }) => {
   const [text, setText] = useState('');
 
-  const handleInputOnChange = e => {
+  const handleOnChange = e => {
     const text = e.target.value;
     setText(text);
 
@@ -23,7 +23,7 @@ const TextEntry = ({ onChange, onReset }) => {
         type="text"
         className="letter-entry"
         value={text}
-        onChange={handleInputOnChange}
+        onChange={handleOnChange}
       />
       <button className="reset-button" onClick={handleReset}>
         Reset
